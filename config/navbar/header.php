@@ -44,14 +44,19 @@ return [
             "title" => "Välj stylesheet.",
         ],
         [
+            "text" => "Verktyg",
+            "url" => "verktyg",
+            "title" => "Verktyg och möjligheter för utveckling.",
+        ],
+        [
             "text" => "IPChecker",
             "url" => "ip",
             "title" => "Validera IP.",
         ],
         [
-            "text" => "Verktyg",
-            "url" => "verktyg",
-            "title" => "Verktyg och möjligheter för utveckling.",
+            "text" => "GeoIPChecker",
+            "url" => "geoip",
+            "title" => "Validera GeoIP.",
         ],
     ],
 ];

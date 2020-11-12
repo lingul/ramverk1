@@ -54,5 +54,10 @@ return [
             "url" => "ip",
             "title" => "Validera IP.",
         ],
+        [
+            "text" => "GeoIPChecker",
+            "url" => "geoip",
+            "title" => "Validera GeoIP.",
+        ],
     ],
 ];
