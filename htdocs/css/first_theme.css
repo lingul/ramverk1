@@ -29,6 +29,7 @@ html {
 body {
   margin: 0;
 }
+
 /**
  * Render the `main` element consistently in IE.
  */
@@ -6282,7 +6283,7 @@ a.rm-button.rm-clicked .rm-button-face-2 {
   font-size: 1.5em;
 }
 .rm-navbar-max .rm-mobile {
-  background-color: #444;
+  background-color: #111;
   text-align: left;
 }
 .rm-navbar-max .rm-mobile a {
@@ -6937,7 +6938,7 @@ a.rm-button.rm-clicked .rm-button-face-2 {
 }
 .outer-wrap-header {
   background-color: black;
-  color: white;
+  color: #9FB12A;
 }
 .outer-wrap-footer {
   background-color: black;

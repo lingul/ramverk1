@@ -2,6 +2,10 @@
 
 namespace Anax\View;
 
+// Turn off all error reporting
+error_reporting(0);
+
+
 /**
  * Render content within an article.
  */

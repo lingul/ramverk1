@@ -59,5 +59,15 @@ return [
             "url" => "geoip",
             "title" => "Validera GeoIP.",
         ],
+        [
+            "text" => "weather",
+            "url" => "weather",
+            "title" => "weather",
+        ],
+        [
+            "text" => "json weather",
+            "url" => "jsonweather",
+            "title" => "json weather",
+        ],
     ],
 ];
