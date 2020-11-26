@@ -26,19 +26,19 @@ class WeatherJsonController implements ContainerInjectableInterface
 
 
     /**
-     * @var string $db a sample member variable that gets initialised
-     */
+    * @var string $db a sample member variable that gets initialised
+    */
     private $model;
 
 
 
     /**
-     * The initialize method is optional and will always be called before the
-     * target method/action. This is a convienient method where you could
-     * setup internal properties that are commonly used by several methods.
-     *
-     * @return void
-     */
+    * The initialize method is optional and will always be called before the
+    * target method/action. This is a convienient method where you could
+    * setup internal properties that are commonly used by several methods.
+    *
+    * @return void
+    */
     public function initialize() : void
     {
         // Use to initialise member variables.
@@ -89,7 +89,7 @@ class WeatherJsonController implements ContainerInjectableInterface
         $type = $request->getGet("type") ?? null;
         $json = null;
         if ($ipAddress !== null && $type !== null) {
-            if (strpos($ipAddress, ":") || strpos($ipAddress, ",") == false ) {
+            if (strpos($ipAddress, ":") || strpos($ipAddress, ",") == false) {
                 $response = $this->model->ipValidate($ipAddress);
                 $check = $response[0];
                 $hostname = $response[1];
@@ -97,26 +97,25 @@ class WeatherJsonController implements ContainerInjectableInterface
                 $res = $this->model->ipStack($ipAddress);
                 $lat = $res["latitude"];
                 $long = $res["longitude"];
-            }
-            elseif (strpos($ipAddress, ",")) {
+            } elseif (strpos($ipAddress, ",")) {
                 $latlong = explode(",", $ipAddress);
                 $lat = $latlong[0];
                 $long = $latlong[1];
             }
+
             if ($type == "Historik") {
                 $answer = $weather->histWeather($lat, $long);
                 $dates = $weather->dates('-31 day', 30);
                 $json = $weather->json($answer, $dates, "h");
-            }
-            elseif ($type == "Kommande") {
+            } elseif ($type == "Kommande") {
                 $answer = $weather->newWeather($lat, $long);
                 $dates = $weather->dates(' +0 day', 7);
                 $json = $weather->json($answer, $dates, "k");
-
             }
             $country = $res["country_name"];
             $region = $res["region_name"];
         }
+
         $data = [
             "check" => $check,
             "hostname" => $hostname,

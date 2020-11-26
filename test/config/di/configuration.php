@@ -6,11 +6,13 @@ return [
 
     // Services to add to the container.
     "services" => [
-        "weather" => [
+        "configuration" => [
             "shared" => true,
             "callback" => function () {
-                $weather = new \Anax\Weather\Weather();
-                return $weather;
+                $config = new \Anax\Configure\Configuration();
+                $dirs = require __DIR__ . "/../configuration.php";
+                $config->setBaseDirectories($dirs);
+                return $config;
             }
         ],
     ],

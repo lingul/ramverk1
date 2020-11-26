@@ -80,7 +80,7 @@ class WeatherController implements ContainerInjectableInterface
         $dates = null;
         if ($ipAddress !== null) {
             $type = $request->getGet("type") ?? null;
-            if (strpos($ipAddress, ":") || strpos($ipAddress, ",") == false ) {
+            if (strpos($ipAddress, ":") || strpos($ipAddress, ",") == false) {
                 $response = $this->model->ipValidate($ipAddress);
                 $check = $response[0];
                 $hostname = $response[1];
@@ -88,12 +88,12 @@ class WeatherController implements ContainerInjectableInterface
                 $res = $this->model->ipStack($ipAddress);
                 $lat = $res["latitude"];
                 $long = $res["longitude"];
-            }
-            elseif (strpos($ipAddress, ",")) {
+            } elseif (strpos($ipAddress, ",")) {
                 $latlong = explode(",", $ipAddress);
                 $lat = $latlong[0];
                 $long = $latlong[1];
             }
+
             if ($type == "Historik") {
                 $answer = $weather->histWeather($lat, $long);
                 if (!is_string($answer)) {
@@ -102,14 +102,13 @@ class WeatherController implements ContainerInjectableInterface
                     }
                     $dates = $weather->dates('-31 day', 30);
                 }
-            }
-            elseif ($type == "Kommande") {
+            } elseif ($type == "Kommande") {
                 $answer = $weather->newWeather($lat, $long);
                 if (!is_string($answer)) {
                     foreach ($answer as $day) {
                         $summaries[] = $day["summary"];
                     }
-                $dates = $weather->dates(' +1 day', 7);
+                    $dates = $weather->dates(' +1 day', 7);
                 }
             }
             $country = $res["country_name"];

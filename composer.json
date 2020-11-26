@@ -1,14 +1,22 @@
 {
-    "name" : "anax/noname",
-    "description": "A me page for the ramverk1 course.",
+    "name" : "me/redovisa",
+    "description": "Anax module for Weather forecasts.",
     "license": "MIT",
     "minimum-stability": "beta",
     "prefer-stable": true,
     "autoload": {
         "psr-4": {"Anax\\": "src/"}
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/canax/remserver"
+        }
+    ],
     "require": {
-        "anax/anax-ramverk1-me": "^1.0.0"
+        "anax/anax-ramverk1-me": "^1.0.0",
+        "anax/remserver": "2.1.3",
+        "lingul/ramverk1-weathermodule": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^7"

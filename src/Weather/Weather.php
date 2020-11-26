@@ -13,14 +13,15 @@ class Weather implements ContainerInjectableInterface
     use ContainerInjectableTrait;
 
 
-    public function dates($start, $to) : array {
+    public function dates($start, $to) : array
+    {
         $old = new \DateTime();
         if ($start) {
             $old->modify($start);
         }
         $dates = [];
         $day = 0;
-        while($day <= $to) {
+        while ($day <= $to) {
             $dates[] = $old->format("Y-m-d");
             $old->modify('+1 day');
             $day+=1;
@@ -28,7 +29,8 @@ class Weather implements ContainerInjectableInterface
         return $dates;
     }
 
-    public function newWeather($lat, $long) {
+    public function newWeather($lat, $long)
+    {
         $keys = require(ANAX_INSTALL_PATH . "/config/api.php");
         // $accessKey = file_get_contents($path[0]);
 
@@ -48,7 +50,6 @@ class Weather implements ContainerInjectableInterface
             return $apiResult["error"].'. Bad latitude longitude, could not retrive weather. Try again';
         }
         return $apiResult["daily"]["data"];
-
     }
 
     public function histWeather($lat, $long)
@@ -69,27 +70,27 @@ class Weather implements ContainerInjectableInterface
         // multi handle
         $mh = curl_multi_init();
         $day = 0;
-        while($day <=30) {
-          // URL from which data will be fetched
-          $fetchURL = 'https://api.darksky.net/forecast/'.$accessKey.'/'.$lat.','.$long.','.$old->format("Y-m-d").'T12:00:00?exclude=flags,hourly,minutley,currently';
-          $old->modify('+1 day');
-          $multiCurl[$day] = curl_init();
-          curl_setopt($multiCurl[$day], CURLOPT_URL,$fetchURL);
-          curl_setopt($multiCurl[$day], CURLOPT_HEADER,0);
-          curl_setopt($multiCurl[$day], CURLOPT_RETURNTRANSFER,1);
-          curl_multi_add_handle($mh, $multiCurl[$day]);
-          $day+=1;
+        while ($day <=30) {
+            // URL from which data will be fetched
+            $fetchURL = 'https://api.darksky.net/forecast/'.$accessKey.'/'.$lat.','.$long.','.$old->format("Y-m-d").'T12:00:00?exclude=flags,hourly,minutley,currently';
+            $old->modify('+1 day');
+            $multiCurl[$day] = curl_init();
+            curl_setopt($multiCurl[$day], CURLOPT_URL, $fetchURL);
+            curl_setopt($multiCurl[$day], CURLOPT_HEADER, 0);
+            curl_setopt($multiCurl[$day], CURLOPT_RETURNTRANSFER, 1);
+            curl_multi_add_handle($mh, $multiCurl[$day]);
+            $day+=1;
         }
         $index=null;
         do {
-          curl_multi_exec($mh,$index);
-      } while($index);
+            curl_multi_exec($mh, $index);
+        } while ($index);
         // get content and remove handles
-        foreach($multiCurl as $k) {
-          curl_multi_remove_handle($mh, $k);
+        foreach ($multiCurl as $k) {
+            curl_multi_remove_handle($mh, $k);
         }
         $data = null;
-        foreach($multiCurl as $ch) {
+        foreach ($multiCurl as $ch) {
             $data = curl_multi_getcontent($ch);
             $result[] = json_decode($data, true);
         }
@@ -126,8 +127,7 @@ class Weather implements ContainerInjectableInterface
                 // $res[$day] = $summaries[$counter];
                 $counter += 1;
             }
-        }
-        elseif ($type == "k") {
+        } elseif ($type == "k") {
             foreach ($apiResult as $day) {
                 $summaries[] = $day["summary"];
             }

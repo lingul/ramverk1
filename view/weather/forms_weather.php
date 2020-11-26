@@ -1,6 +1,7 @@
 <?php
 
 namespace Anax\View;
+
 ?>
 <!-- <script src="../view/ip/OpenLayers.js"></script> -->
 <form>
@@ -32,20 +33,20 @@ namespace Anax\View;
 <?php endif;?>
 <?php if (sizeof($tja) != 0) : ?>
 <table style="width:100%">
-  <tr>
-    <th>Date</th>
-    <th>Description</th>
-  </tr>
-  <?php
-  $i = 0;
-  foreach($tja as $day) : ?>
-      <tr>
+    <tr>
+        <th>Date</th>
+        <th>Description</th>
+    </tr>
+    <?php
+    $i = 0;
+    foreach ($tja as $day) : ?>
+    <tr>
         <td align="center"><?=$dates[$i]?></td>
         <td align="center"><?=$day?></td>
-      </tr>
-<?php
-$i += 1;
- endforeach; ?>
+    </tr>
+        <?php
+        $i += 1;
+    endforeach; ?>
 </table>
 <?php endif; ?>
 <?php if (!is_string($hist)) : ?>
