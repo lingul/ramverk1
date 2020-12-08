@@ -69,5 +69,10 @@ return [
             "url" => "jsonweather",
             "title" => "json weather",
         ],
+        [
+            "text" => "Book",
+            "url" => "book",
+            "title" => "Databas med böcker.",
+        ],
     ],
 ];
