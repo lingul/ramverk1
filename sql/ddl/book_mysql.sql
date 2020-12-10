@@ -44,6 +44,6 @@ CREATE TABLE Book (
 -- Create test
 --
 INSERT INTO Book (id, title, author, picture)
-VALUES (1, "Harry Potter och de vises sten", "J.K. Rowling", "img/book1");
-VALUES (2, "Harry Potter och Hemligheternas kammare", "J.K. Rowling", "img/book2");
-VALUES (3, "Harry Potter och fången från Azkaban", "J.K. Rowling", "img/book3");
+VALUES (1, "Harry Potter och de vises sten", "J.K. Rowling", "img/book1.jpg");
+VALUES (2, "Harry Potter och Hemligheternas kammare", "J.K. Rowling", "img/book2.jpg");
+VALUES (3, "Harry Potter och fången från Azkaban", "J.K. Rowling", "img/book3.jpg");
